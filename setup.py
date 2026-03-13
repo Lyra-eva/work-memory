@@ -27,7 +27,8 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/openclaw/work-memory",
-    packages=find_packages(where="."),
+    packages=find_packages(where=".", include=['work_memory', 'work_memory.*']),
+    package_dir={'': '.'},
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
