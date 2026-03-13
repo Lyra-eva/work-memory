@@ -27,7 +27,7 @@ classifiers = [
     "Topic :: Office/Business :: Groupware",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.6"
 dependencies = []
 
 [project.optional-dependencies]
