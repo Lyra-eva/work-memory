@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "work-memory"
-version = "1.0.0"
+dynamic = ["version"]
 description = "工作记忆系统 - 专为工作场景设计的文件系统记忆架构"
 readme = "README.md"
 license = {text = "MIT"}
@@ -18,6 +18,8 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
@@ -54,6 +56,9 @@ include = ["work_memory*"]
 
 [tool.setuptools.package-data]
 work_memory = ["*.md"]
+
+[tool.setuptools.dynamic]
+version = {file = "VERSION"}
 
 [tool.black]
 line-length = 100

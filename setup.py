@@ -14,9 +14,13 @@ from pathlib import Path
 this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text(encoding='utf-8')
 
+# Read version
+version_file = Path(__file__).parent / "VERSION"
+version = version_file.read_text().strip() if version_file.exists() else "2.0.0"
+
 setup(
     name="work-memory",
-    version="1.0.0",
+    version=version,
     author="OpenClaw Community",
     author_email="support@openclaw.ai",
     description="工作记忆系统 - 专为工作场景设计的文件系统记忆架构",
