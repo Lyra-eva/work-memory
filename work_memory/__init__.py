@@ -36,7 +36,7 @@ class WorkMemory:
     专为工作场景设计的文件系统记忆架构
     """
     
-    def __init__(self, root_dir: str = "~/openclaw/workspace/work_memory"):
+    def __init__(self, root_dir: str = "~/.openclaw/workspace/work-memory-data"):
         """
         初始化工作记忆系统
         
