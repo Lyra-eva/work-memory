@@ -43,7 +43,6 @@ htmlcov/
 docs/_build/
 
 # Work Memory Data
-work_memory/
 backups/
 *.log
 
