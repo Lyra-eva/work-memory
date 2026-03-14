@@ -67,6 +67,8 @@ class MemoryMigrator:
             
             if migration_type == 'default_to_work':
                 success = self._migrate_default_to_work()
+            elif migration_type == 'opclaw_memory_to_work':
+                success = self._migrate_opclaw_memory_to_work()
             elif migration_type == 'work_v1_to_v2':
                 success = self._migrate_work_v1_to_v2()
             else:
@@ -93,6 +95,10 @@ class MemoryMigrator:
         if os.path.exists(os.path.join(self.source_dir, 'cognition', 'graph.db')):
             return 'default_to_work'
         
+        # 检查是否有 OpenClaw 默认 memory/ 目录 (包含 YYYY-MM-DD.md 文件)
+        if self._is_opclaw_memory_dir():
+            return 'opclaw_memory_to_work'
+        
         # 检查工作记忆版本
         version_file = os.path.join(self.source_dir, 'VERSION')
         if os.path.exists(version_file):
@@ -103,6 +109,25 @@ class MemoryMigrator:
         
         # 默认假设是工作记忆升级
         return 'work_v1_to_v2'
+    
+    def _is_opclaw_memory_dir(self) -> bool:
+        """检查是否是 OpenClaw 默认 memory/ 目录"""
+        # 检查是否包含 YYYY-MM-DD.md 格式的日志文件
+        import re
+        date_pattern = re.compile(r'^\d{4}-\d{2}-\d{2}\.md$')
+        
+        if not os.path.exists(self.source_dir):
+            return False
+        
+        for file in os.listdir(self.source_dir):
+            if date_pattern.match(file):
+                return True
+        
+        # 或者检查是否有 MEMORY.md
+        if os.path.exists(os.path.join(self.source_dir, 'MEMORY.md')):
+            return True
+        
+        return False
     
     def _create_backup(self) -> str:
         """创建备份"""
@@ -140,6 +165,65 @@ class MemoryMigrator:
         if os.path.exists(graph_db):
             print("  🗄️ 迁移 graph.db 数据...")
             self._migrate_graph_db(graph_db)
+        
+        # 3. 创建版本文件
+        version_file = os.path.join(self.target_dir, 'VERSION')
+        with open(version_file, 'w') as f:
+            f.write('2.0.0')
+        
+        return True
+    
+    def _migrate_opclaw_memory_to_work(self) -> bool:
+        """
+        从 OpenClaw 默认 memory/ 目录迁移到工作记忆系统
+        
+        迁移内容:
+        - memory/YYYY-MM-DD.md → work_memory/logs/daily/
+        - memory/MEMORY.md → work_memory/preferences/MEMORY.md
+        - 自动识别并迁移重要信息
+        """
+        print("\n【迁移】OpenClaw memory/ → 工作记忆系统")
+        print("-" * 70)
+        
+        # 1. 迁移 MEMORY.md
+        memory_md = os.path.join(self.source_dir, 'MEMORY.md')
+        if os.path.exists(memory_md):
+            print("  📄 迁移 MEMORY.md...")
+            dst_path = os.path.join(self.target_dir, 'preferences', 'MEMORY.md')
+            os.makedirs(os.path.dirname(dst_path), exist_ok=True)
+            shutil.copy2(memory_md, dst_path)
+            self.migration_log.append({
+                'type': 'preference',
+                'source': memory_md,
+                'target': dst_path,
+                'status': 'success'
+            })
+            print(f"    ✅ 已迁移 MEMORY.md")
+        
+        # 2. 迁移每日日志 (YYYY-MM-DD.md)
+        import re
+        date_pattern = re.compile(r'^(\d{4}-\d{2}-\d{2})\.md$')
+        
+        daily_logs_migrated = 0
+        for file in os.listdir(self.source_dir):
+            match = date_pattern.match(file)
+            if match:
+                date_str = match.group(1)
+                src_path = os.path.join(self.source_dir, file)
+                dst_path = os.path.join(self.target_dir, 'logs', 'daily', f"{date_str}.md")
+                
+                os.makedirs(os.path.dirname(dst_path), exist_ok=True)
+                shutil.copy2(src_path, dst_path)
+                
+                self.migration_log.append({
+                    'type': 'daily_log',
+                    'source': src_path,
+                    'target': dst_path,
+                    'status': 'success'
+                })
+                daily_logs_migrated += 1
+        
+        print(f"    ✅ 已迁移 {daily_logs_migrated} 个每日日志")
         
         # 3. 创建版本文件
         version_file = os.path.join(self.target_dir, 'VERSION')
@@ -368,6 +452,30 @@ class MemoryMigrator:
 # 命令行工具
 # ============================================================
 
+def migrate_opclaw_memory():
+    """
+    OpenClaw 环境专用：自动迁移 workspace/memory/ 到 workspace/work-memory/
+    
+    这是为 OpenClaw 设计的便捷函数，无需参数即可自动迁移
+    """
+    # OpenClaw 默认路径
+    workspace_dir = os.path.expanduser("~/.openclaw/workspace")
+    source_dir = os.path.join(workspace_dir, "memory")
+    target_dir = os.path.join(workspace_dir, "work-memory")
+    
+    # 检查源目录是否存在
+    if not os.path.exists(source_dir):
+        print(f"❌ 源目录不存在：{source_dir}")
+        print("   提示：OpenClaw 默认记忆目录通常在 ~/.openclaw/workspace/memory/")
+        return False
+    
+    print(f"🔍 检测到 OpenClaw 记忆目录：{source_dir}")
+    print(f"📥 将迁移到：{target_dir}\n")
+    
+    migrator = MemoryMigrator(source_dir, target_dir)
+    return migrator.migrate('auto')
+
+
 def main():
     """主函数"""
     import argparse
@@ -377,15 +485,24 @@ def main():
     parser.add_argument('target', help='目标记忆目录')
     parser.add_argument(
         '--type',
-        choices=['auto', 'default_to_work', 'work_v1_to_v2'],
+        choices=['auto', 'default_to_work', 'opclaw_memory_to_work', 'work_v1_to_v2'],
         default='auto',
         help='迁移类型'
+    )
+    parser.add_argument(
+        '--opclaw',
+        action='store_true',
+        help='OpenClaw 模式：自动迁移 ~/.openclaw/workspace/memory/ 到 work-memory/'
     )
     
     args = parser.parse_args()
     
-    migrator = MemoryMigrator(args.source, args.target)
-    success = migrator.migrate(args.type)
+    # OpenClaw 便捷模式
+    if args.opclaw:
+        success = migrate_opclaw_memory()
+    else:
+        migrator = MemoryMigrator(args.source, args.target)
+        success = migrator.migrate(args.type)
     
     sys.exit(0 if success else 1)
 

@@ -593,6 +593,10 @@ class WorkMemory:
     
     def get_stats(self) -> Dict:
         """获取统计信息"""
+        # 获取技能详情
+        skills_data = self.get_skills()
+        skills_count = len(skills_data)
+        
         stats = {
             'root_dir': self.root_dir,
             'projects': {
@@ -605,7 +609,10 @@ class WorkMemory:
                 'in_progress': len(os.listdir(os.path.join(self.root_dir, 'tasks', 'in_progress'))),
                 'completed': len(os.listdir(os.path.join(self.root_dir, 'tasks', 'completed')))
             },
-            'skills': len(self.get_skills()),
+            'skills': {
+                'count': skills_count,
+                'details': skills_data
+            },
             'contacts': 0,
             'documents': 0
         }
