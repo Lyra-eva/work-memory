@@ -1,0 +1,11 @@
+{
+  "feedback_id": "fb_2ae553916bef",
+  "result_id": "exec_2d070adfe71b",
+  "decision_id": "dec_4f42a255bfff",
+  "timestamp": "2026-03-13T10:52:59.907546",
+  "feedback_type": "auto",
+  "rating": 1.0,
+  "comment": null,
+  "metrics": {},
+  "reward_signal": 0.0
+}

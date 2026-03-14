@@ -1,0 +1,7 @@
+{
+  "enabled": true,
+  "auto_execute_pipeline": true,
+  "auto_mine_patterns": true,
+  "pattern_mining_interval_hours": 1,
+  "log_enabled": true
+}

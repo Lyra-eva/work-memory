@@ -1,0 +1,17 @@
+{
+  "id": "test.capability_evolution_20260312224758",
+  "name": "capability_evolution_20260312224758",
+  "version": "1.0.0",
+  "owner_agent": "test",
+  "description": "Auto-extracted from evolution evolution_20260312224758",
+  "category": "auto_generated",
+  "interface_schema": {
+    "inputs": [],
+    "outputs": []
+  },
+  "metadata": {
+    "extracted_at": "2026-03-12T22:47:58.088715",
+    "source_task": "evolution_20260312224758",
+    "lessons_learned": []
+  }
+}

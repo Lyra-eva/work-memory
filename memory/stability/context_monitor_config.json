@@ -1,0 +1,1 @@
+{"schema":"stability.context.v1","thresholds":{"warning":0.5,"critical":0.8,"emergency":0.95}}

@@ -1,0 +1,10 @@
+{
+  "name": "李四",
+  "role": "采购经理",
+  "company": "客户公司",
+  "metadata": {
+    "created_at": "2026-03-13T17:35:06.478882",
+    "updated_at": "2026-03-13T17:35:06.478886",
+    "category": "clients"
+  }
+}

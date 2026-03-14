@@ -1,0 +1,72 @@
+[
+  {
+    "type": "growth",
+    "name": "持续成长轨迹",
+    "description": "检测到 3 次进化事件，显示持续成长",
+    "importance": 0.8,
+    "confidence": 0.8,
+    "recommendation": "保持当前进化节奏",
+    "agent_id": "lily",
+    "mined_at": "2026-03-12T22:21:10.449459"
+  },
+  {
+    "type": "growth",
+    "name": "持续成长轨迹",
+    "description": "检测到 1 次进化事件，显示持续成长",
+    "importance": 0.8,
+    "confidence": 0.6,
+    "recommendation": "保持当前进化节奏",
+    "agent_id": "test",
+    "mined_at": "2026-03-12T22:27:53.794462"
+  },
+  {
+    "type": "growth",
+    "name": "持续成长轨迹",
+    "description": "检测到 1 次进化事件，显示持续成长",
+    "importance": 0.8,
+    "confidence": 0.6,
+    "recommendation": "保持当前进化节奏",
+    "agent_id": "test",
+    "mined_at": "2026-03-12T22:32:52.107162"
+  },
+  {
+    "type": "growth",
+    "name": "持续成长轨迹",
+    "description": "检测到 1 次进化事件，显示持续成长",
+    "importance": 0.8,
+    "confidence": 0.6,
+    "recommendation": "保持当前进化节奏",
+    "agent_id": "test",
+    "mined_at": "2026-03-12T22:32:52.108013"
+  },
+  {
+    "type": "growth",
+    "name": "持续成长轨迹",
+    "description": "检测到 2 次进化事件，显示持续成长",
+    "importance": 0.8,
+    "confidence": 0.7,
+    "recommendation": "保持当前进化节奏",
+    "agent_id": "test",
+    "mined_at": "2026-03-12T22:47:58.089059"
+  },
+  {
+    "type": "growth",
+    "name": "持续成长轨迹",
+    "description": "检测到 4 次进化事件，显示持续成长",
+    "importance": 0.8,
+    "confidence": 0.9,
+    "recommendation": "保持当前进化节奏",
+    "agent_id": "lily",
+    "mined_at": "2026-03-12T22:48:32.586917"
+  },
+  {
+    "type": "success",
+    "name": "成功模式",
+    "description": "检测到 2 次成功事件",
+    "importance": 0.9,
+    "confidence": 0.85,
+    "recommendation": "继续按当前模式推进进化",
+    "agent_id": "lily",
+    "mined_at": "2026-03-12T22:48:32.586920"
+  }
+]

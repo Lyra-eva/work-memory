@@ -1,0 +1,11 @@
+{
+  "name": "张三",
+  "role": "技术经理",
+  "company": "某某公司",
+  "email": "zhangsan@example.com",
+  "metadata": {
+    "created_at": "2026-03-13T17:35:06.478785",
+    "updated_at": "2026-03-13T17:35:06.478791",
+    "category": "colleagues"
+  }
+}

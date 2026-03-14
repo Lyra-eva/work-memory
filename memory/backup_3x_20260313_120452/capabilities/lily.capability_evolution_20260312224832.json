@@ -1,0 +1,17 @@
+{
+  "id": "lily.capability_evolution_20260312224832",
+  "name": "capability_evolution_20260312224832",
+  "version": "1.0.0",
+  "owner_agent": "lily",
+  "description": "Auto-extracted from evolution evolution_20260312224832",
+  "category": "auto_generated",
+  "interface_schema": {
+    "inputs": [],
+    "outputs": []
+  },
+  "metadata": {
+    "extracted_at": "2026-03-12T22:48:32.586598",
+    "source_task": "evolution_20260312224832",
+    "lessons_learned": []
+  }
+}

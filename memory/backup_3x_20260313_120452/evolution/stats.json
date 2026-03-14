@@ -1,0 +1,15 @@
+{
+  "schema": "evolution.stats.v1",
+  "generated_at": "2026-03-12T22:48:32.586298",
+  "total_events": 8,
+  "by_type": {
+    "capability_learned": 8
+  },
+  "by_agent": {
+    "lily": 4,
+    "test": 2,
+    "demo": 1,
+    "test_agent": 1
+  },
+  "importance_avg": 0.625
+}
