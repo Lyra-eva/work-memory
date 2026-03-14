@@ -10,31 +10,42 @@
 
 ## 📦 安装
 
-### 方式 1: ClawHub 安装（推荐 OpenClaw 用户）
+### 一键安装（推荐）
 
 ```bash
-# 自动安装核心库 + 技能
+# OpenClaw 用户只需这一个命令！
 clawhub install work-memory
 ```
 
-### 方式 2: 手动安装
+**说明**：
+- ✅ 自动下载技能
+- ✅ 自动安装核心库（`pip install work-memory`）
+- ✅ 自动配置完成
+
+---
+
+### 手动安装（可选）
+
+如果自动安装失败：
 
 ```bash
-# 1. 先安装核心库（PyPI）
+# 1. 手动安装核心库
 pip install work-memory
 
-# 2. 技能会自动加载（如果在 workspace/skills/ 目录）
+# 2. 重新加载技能
+# （重启 OpenClaw 或重新加载技能）
 ```
 
-### 方式 3: 开发模式
+---
+
+### 开发模式
 
 ```bash
-# 1. 安装核心库
+# 1. 克隆并安装核心库
 cd ~/.openclaw/workspace/work-memory-project
 pip install -e .
 
-# 2. 技能已链接
-# ~/.openclaw/workspace/skills/work-memory/
+# 2. 技能已链接到 workspace/skills/work-memory/
 ```
 
 ## 🚀 快速开始

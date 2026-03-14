@@ -11,13 +11,20 @@ import os
 import sys
 from typing import Dict, List, Optional
 
-# 导入核心库
+# 导入核心库（自动安装依赖）
 try:
     from work_memory import WorkMemory
 except ImportError:
-    print("⚠️ 请先安装 Work Memory 核心库：pip install work-memory")
-    print("   或开发模式：cd ~/.openclaw/workspace/work-memory-project && pip install -e .")
-    sys.exit(1)
+    print("⚠️ 检测到 Work Memory 核心库未安装，正在自动安装...")
+    import subprocess
+    try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", "work-memory"])
+        print("✅ 核心库安装完成！")
+        from work_memory import WorkMemory
+    except Exception as e:
+        print(f"❌ 自动安装失败：{e}")
+        print("   请手动安装：pip install work-memory")
+        sys.exit(1)
 
 
 class WorkMemorySkill:
