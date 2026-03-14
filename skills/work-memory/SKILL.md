@@ -1,54 +1,42 @@
-# Work Memory Skill - OpenClaw 技能集成
+---
+name: work-memory
+description: Work Memory - 工作记忆系统，专为工作场景设计的项目/任务/日志管理工具
+author: OpenClaw Community
+version: 2.0.0
+metadata:
+  {
+    "openclaw":
+      {
+        "requires": { "bins": ["python3", "pip"] }
+      }
+  }
+---
 
-工作记忆系统的 OpenClaw 技能包装器，提供便捷的命令式交互。
+# Work Memory Skill
 
-## 🎯 定位
+工作记忆系统 - 专为工作场景设计的文件系统记忆架构。
 
-本技能是 **Work Memory 核心库** 的 OpenClaw 集成层：
-- **核心库** (`work-memory` PyPI 包) - 独立 Python 包，包含所有业务逻辑
-- **技能层** (本技能) - OpenClaw 包装器，提供命令处理和用户交互
+## 🚀 一键安装
 
-## 📦 安装
-
-### 一键安装（推荐）
+**只需一个命令**：
 
 ```bash
-# OpenClaw 用户只需这一个命令！
 clawhub install work-memory
 ```
 
 **说明**：
 - ✅ 自动下载技能
-- ✅ 自动安装核心库（`pip install work-memory`）
+- ✅ 自动安装 Python 核心库（`pip install work-memory`）
 - ✅ 自动配置完成
 
----
-
-### 手动安装（可选）
-
-如果自动安装失败：
-
+如果自动安装失败，请手动执行：
 ```bash
-# 1. 手动安装核心库
 pip install work-memory
-
-# 2. 重新加载技能
-# （重启 OpenClaw 或重新加载技能）
 ```
 
 ---
 
-### 开发模式
-
-```bash
-# 1. 克隆并安装核心库
-cd ~/.openclaw/workspace/work-memory-project
-pip install -e .
-
-# 2. 技能已链接到 workspace/skills/work-memory/
-```
-
-## 🚀 快速开始
+## 📋 快速开始
 
 ### 命令式使用
 
@@ -56,50 +44,41 @@ pip install -e .
 /wm project create "A 股智能体" --priority high
 /wm task add "数据验证" --project proj_001
 /wm stats
-/wm log daily
+/wm log daily --tasks "任务 1,任务 2" --notes "进展顺利"
 ```
 
-### Python API 使用
+### Python API
 
 ```python
 from work_memory import WorkMemory
 
-# 直接使用核心库
-wm = WorkMemory(root_dir="~/work-memory-data")
-wm.create_project("项目名称")
-wm.create_task("任务标题")
+wm = WorkMemory()
+wm.create_project("proj_001", {'name': '项目名称'})
+wm.create_task("task_001", {'title': '任务标题'})
 ```
 
-## 📋 可用命令
+---
 
-### 项目管理
+## 📦 完整文档
 
-| 命令 | 说明 | 示例 |
+- [使用文档](README.md)
+- [快速开始](QUICKSTART.md)
+- [架构说明](ARCHITECTURE.md)
+- [集成指南](INTEGRATION_GUIDE.md)
+
+---
+
+## 🎯 核心功能
+
+| 功能 | 命令 | 说明 |
 |------|------|------|
-| `/wm project create <name>` | 创建项目 | `/wm project create "A 股智能体"` |
-| `/wm project list` | 列出项目 | `/wm project list --status active` |
-| `/wm project complete <id>` | 完成项目 | `/wm project complete proj_001` |
+| 项目管理 | `/wm project create <name>` | 创建/列出/完成项目 |
+| 任务管理 | `/wm task add <title>` | 添加/列出/完成任务 |
+| 工作日志 | `/wm log daily` | 日报/周报/月报 |
+| 技能追踪 | `/wm skill add <name>` | 记录技能成长 |
+| 统计信息 | `/wm stats` | 查看工作统计 |
 
-### 任务管理
-
-| 命令 | 说明 | 示例 |
-|------|------|------|
-| `/wm task add <title>` | 添加任务 | `/wm task add "数据验证"` |
-| `/wm task list` | 列出任务 | `/wm task list --status pending` |
-| `/wm task complete <id>` | 完成任务 | `/wm task complete task_001` |
-
-### 工作日志
-
-| 命令 | 说明 | 示例 |
-|------|------|------|
-| `/wm log daily` | 写日报 | `/wm log daily` |
-| `/wm log weekly` | 写周报 | `/wm log weekly` |
-
-### 统计信息
-
-| 命令 | 说明 | 示例 |
-|------|------|------|
-| `/wm stats` | 查看统计 | `/wm stats` |
+---
 
 ## 🔧 配置
 
@@ -109,59 +88,8 @@ wm.create_task("任务标题")
 ### Work Memory
 
 - 数据目录：`~/.openclaw/workspace/work-memory-data/`
-- 备份目录：`~/.openclaw/workspace/work-memory-backups/`
 - 自动备份：每天 23:00
 ```
-
-## 📊 架构说明
-
-```
-OpenClaw Session
-      ↕
-Work Memory Skill (技能层 - 本技能)
-      ↕
-work-memory (核心库 - PyPI 包)
-      ↕
-File System (work-memory-data/)
-```
-
-**优势**：
-- ✅ 核心库独立，不依赖 OpenClaw
-- ✅ 技能层轻薄，易于维护
-- ✅ 可在非 OpenClaw 环境使用核心库
-- ✅ OpenClaw 升级不影响核心库
-
-## 🛡️ 与 OpenClaw 默认记忆的关系
-
-| 维度 | OpenClaw 默认记忆 | Work Memory |
-|------|-----------------|-------------|
-| **用途** | 对话记忆、用户偏好、AI 进化 | 工作管理、项目追踪 |
-| **存储** | `memory/cognition/graph.db` | `work-memory-data/` |
-| **调用方式** | 自动管理 | 显式调用 |
-| **数据格式** | SQLite + Markdown | JSON + Markdown |
-
-**协作方式**：互补共存，互不影响
-
-## 📖 更多文档
-
-- [核心库文档](https://pypi.org/project/work-memory/)
-- [GitHub 仓库](https://github.com/openclaw/work-memory)
-- [集成指南](INTEGRATION_GUIDE.md)
-- [使用示例](example_usage.py)
-
-## ❓ 常见问题
-
-### Q: 必须安装核心库吗？
-
-A: 是的。技能只是包装器，核心功能在 `work-memory` PyPI 包中。
-
-### Q: 可以只用核心库不用技能吗？
-
-A: 可以。在非 OpenClaw 环境中，直接使用 `from work_memory import WorkMemory`。
-
-### Q: 会影响 OpenClaw 升级吗？
-
-A: 不会。核心库完全独立，技能层轻薄，OpenClaw 升级影响极小。
 
 ---
 
