@@ -8,22 +8,30 @@
 - ✅ **增强迁移脚本** - 支持 OpenClaw 默认 memory/ 目录自动检测
 - ✅ **新增 `--opclaw` 参数** - 一键迁移 OpenClaw 记忆数据
 
-### 2. OpenClaw 插件层
+### 2. Plugin-Core 架构重构
 
-创建文件：
-- ✅ `work_memory_plugin.py` - OpenClaw 插件核心
+**核心库**（独立 PyPI 包）：
+- ✅ `work-memory-project/` - 完全独立的 Python 包
+- ✅ 不依赖 OpenClaw 任何模块
+- ✅ 可在任何 Python 项目中使用
+
+**技能层**（轻薄包装器）：
+- ✅ `work_memory_skill.py` - OpenClaw 技能入口
+- ✅ `work_memory_plugin.py` - 轻薄插件包装器
 - ✅ `example_usage.py` - 完整使用示例
 - ✅ `install.sh` - 一键安装脚本
 
 核心功能：
 ```python
+# 方式 A: 使用技能包装器
 from work_memory_plugin import WorkMemoryPlugin
-
 plugin = WorkMemoryPlugin()
 plugin.create_project("项目名称")
-plugin.create_task("任务标题")
-plugin.save_daily_log()
-plugin.get_stats()
+
+# 方式 B: 直接使用核心库（推荐）
+from work_memory import WorkMemory
+wm = WorkMemory()
+wm.create_project("proj_001", {'name': '项目名称'})
 ```
 
 ### 3. 文档体系
@@ -41,20 +49,29 @@ plugin.get_stats()
 
 ---
 
-## 🎯 集成架构
+## 🎯 集成架构（Plugin-Core 模式）
 
 ```
+┌─────────────────────────────────────────┐
+│         work-memory (PyPI 包)            │  ← 核心库（独立）
+│  - 所有业务逻辑                          │
+│  - 不依赖 OpenClaw                       │
+│  - 可在任何 Python 项目使用               │
+└─────────────────────────────────────────┘
+              ↕ 依赖
+┌─────────────────────────────────────────┐
+│    work-memory-skill (本技能)            │  ← 技能层（轻薄）
+│  - OpenClaw 集成                         │
+│  - 命令处理                              │
+│  - 用户交互                              │
+└─────────────────────────────────────────┘
+              ↕
 OpenClaw Framework (框架层)
-        ↕
-Skills/Plugins Layer (插件层) ← Work Memory 技能
-        ↕
-Work Memory Core (核心库)
-        ↕
-File System (数据存储)
 ```
 
 **关键设计**：
-- ✅ 插件层与框架层解耦
+- ✅ 核心库完全独立（PyPI 包）
+- ✅ 技能层轻薄包装（易于维护）
 - ✅ 不影响 OpenClaw 升级
 - ✅ 数据物理隔离
 - ✅ 灵活可配置
@@ -77,63 +94,71 @@ File System (数据存储)
 
 ## 🚀 安装方式
 
-### 一键安装（推荐）
+### 方式 1: ClawHub 安装（推荐 OpenClaw 用户）
 
 ```bash
-cd ~/.openclaw/workspace/skills/work-memory
-./install.sh
+clawhub install work-memory
 ```
 
-### 手动安装
+### 方式 2: PyPI 安装核心库
+
+```bash
+# 安装核心库（PyPI）
+pip install work-memory
+
+# 验证
+python3 -c "from work_memory import WorkMemory; wm = WorkMemory(); print(wm.get_stats())"
+```
+
+### 方式 3: 开发模式
 
 ```bash
 # 1. 安装核心库
 cd ~/.openclaw/workspace/work-memory-project
 pip install -e .
 
-# 2. 验证安装
-python3 -c "from work_memory_plugin import WorkMemoryPlugin; p = WorkMemoryPlugin(); print(p.get_stats())"
+# 2. 技能已链接
+cd ~/.openclaw/workspace/skills/work-memory
+./install.sh
 ```
 
 ---
 
 ## 💡 使用场景
 
-### 场景 1: 在 OpenClaw 技能中使用
+### 场景 1: OpenClaw 技能命令
+
+```
+/wm project create "A 股智能体" --priority high
+/wm task add "数据验证" --project proj_001
+/wm stats
+/wm log daily
+```
+
+### 场景 2: 在 OpenClaw 技能中调用
 
 ```python
-# skills/my-skill/SKILL.md
+# 方式 A: 使用技能包装器
 from work_memory_plugin import WorkMemoryPlugin
 
-class MySkill:
-    def __init__(self):
-        self.wm = WorkMemoryPlugin()
-    
-    def handle_user_request(self, message):
-        if "创建项目" in message:
-            result = self.wm.create_project(message.replace("创建项目", ""))
-            return result['message']
-        elif "添加任务" in message:
-            result = self.wm.create_task(message.replace("添加任务", ""))
-            return result['message']
-        else:
-            return "我可以帮你管理项目和任务"
+plugin = WorkMemoryPlugin()
+plugin.create_project("项目名称")
+
+# 方式 B: 直接使用核心库（推荐）
+from work_memory import WorkMemory
+
+wm = WorkMemory()
+wm.create_project("proj_001", {'name': '项目名称'})
 ```
 
-### 场景 2: 命令调用
+### 场景 3: 非 OpenClaw 环境
 
 ```python
-from work_memory_plugin import handle_wm_command
+# 在任何 Python 项目中使用
+from work_memory import WorkMemory
 
-# 用户输入：/wm stats
-response = handle_wm_command('stats', [])
-print(response)
-```
-
-### 场景 3: 独立工具
-
-```bash
-python3 -c "from work_memory_plugin import WorkMemoryPlugin; p = WorkMemoryPlugin(); print(p.create_project('测试'))"
+wm = WorkMemory(root_dir="~/my-work-memory")
+wm.create_project("proj_001", {'name': '项目名称'})
 ```
 
 ---
