@@ -1,0 +1,18 @@
+{
+  "schema": "evolution.stats.v1",
+  "generated_at": "2026-03-15T11:13:32.595809",
+  "total_events": 14,
+  "by_type": {
+    "capability_learned": 5,
+    "memory_consolidated": 3,
+    "capability_updated": 2,
+    "pattern_discovered": 2,
+    "skill_improved": 2
+  },
+  "by_agent": {
+    "migration_test": 1,
+    "memory_test_agent": 4,
+    "test_agent": 9
+  },
+  "importance_avg": 0.7392857142857142
+}

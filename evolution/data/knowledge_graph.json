@@ -1,0 +1,288 @@
+{
+  "schema": "knowledge_graph.v1",
+  "exported_at": "2026-03-15T11:56:00.390334",
+  "nodes": [
+    {
+      "id": "kg_web_search_cf779623",
+      "name": "Web Search",
+      "category": "skill",
+      "definition": "网络搜索能力",
+      "mastery_level": 0.8,
+      "related_nodes": {},
+      "metadata": {
+        "last_updated": "2026-03-15T11:56:00.369326",
+        "update_count": 1
+      },
+      "created_at": "2026-03-15T11:53:27.866198",
+      "updated_at": "2026-03-15T11:56:00.369337"
+    },
+    {
+      "id": "kg_keyword_extraction_dbe70311",
+      "name": "Keyword Extraction",
+      "category": "skill",
+      "definition": "关键词提取技能",
+      "mastery_level": 0.4,
+      "related_nodes": {
+        "kg_search_strategy_7bdb7ccf": 0.9
+      },
+      "metadata": {},
+      "created_at": "2026-03-15T11:53:27.866242",
+      "updated_at": "2026-03-15T11:53:27.871726"
+    },
+    {
+      "id": "kg_search_strategy_7bdb7ccf",
+      "name": "Search Strategy",
+      "category": "concept",
+      "definition": "搜索策略概念",
+      "mastery_level": 0.6,
+      "related_nodes": {
+        "kg_web_search_cf779623": 0.8
+      },
+      "metadata": {},
+      "created_at": "2026-03-15T11:53:27.866232",
+      "updated_at": "2026-03-15T11:53:27.874404"
+    },
+    {
+      "id": "kg_capability_learned_a83aadfb",
+      "name": "capability_learned",
+      "category": "concept",
+      "definition": "从evolution_event.type提取的概念",
+      "mastery_level": 0.0,
+      "related_nodes": {},
+      "metadata": {
+        "source": "evolution_event.type",
+        "confidence": 0.85,
+        "created_from": "concept_extractor",
+        "created_at": "2026-03-15T11:56:00.365953"
+      },
+      "created_at": "2026-03-15T11:56:00.365988",
+      "updated_at": "2026-03-15T11:56:00.365990"
+    },
+    {
+      "id": "kg_web_search_0a23daf0",
+      "name": "web_search",
+      "category": "skill",
+      "definition": "进化事件中的能力：web_search",
+      "mastery_level": 0.0,
+      "related_nodes": {},
+      "metadata": {
+        "source": "evolution_event.data.capability",
+        "confidence": 0.9,
+        "created_from": "concept_extractor",
+        "created_at": "2026-03-15T11:56:00.367750"
+      },
+      "created_at": "2026-03-15T11:56:00.367779",
+      "updated_at": "2026-03-15T11:56:00.367783"
+    },
+    {
+      "id": "kg_skill_improved_82570521",
+      "name": "skill_improved",
+      "category": "concept",
+      "definition": "从evolution_event.type提取的概念",
+      "mastery_level": 0.0,
+      "related_nodes": {},
+      "metadata": {
+        "source": "evolution_event.type",
+        "confidence": 0.85,
+        "created_from": "concept_extractor",
+        "created_at": "2026-03-15T11:56:00.370846"
+      },
+      "created_at": "2026-03-15T11:56:00.370870",
+      "updated_at": "2026-03-15T11:56:00.370872"
+    },
+    {
+      "id": "kg_pattern_discovered_8d9a0281",
+      "name": "pattern_discovered",
+      "category": "concept",
+      "definition": "从evolution_event.type提取的概念",
+      "mastery_level": 0.0,
+      "related_nodes": {},
+      "metadata": {
+        "source": "evolution_event.type",
+        "confidence": 0.85,
+        "created_from": "concept_extractor",
+        "created_at": "2026-03-15T11:56:00.372374"
+      },
+      "created_at": "2026-03-15T11:56:00.372397",
+      "updated_at": "2026-03-15T11:56:00.372399"
+    },
+    {
+      "id": "kg_error_recovery_c57deb42",
+      "name": "error_recovery",
+      "category": "concept",
+      "definition": "从evolution_event.data.pattern提取的概念",
+      "mastery_level": 0.0,
+      "related_nodes": {},
+      "metadata": {
+        "source": "evolution_event.data.pattern",
+        "confidence": 0.8,
+        "created_from": "concept_extractor",
+        "created_at": "2026-03-15T11:56:00.373753"
+      },
+      "created_at": "2026-03-15T11:56:00.373776",
+      "updated_at": "2026-03-15T11:56:00.373779"
+    },
+    {
+      "id": "kg_capability_updated_360468b8",
+      "name": "capability_updated",
+      "category": "concept",
+      "definition": "从evolution_event.type提取的概念",
+      "mastery_level": 0.0,
+      "related_nodes": {},
+      "metadata": {
+        "source": "evolution_event.type",
+        "confidence": 0.85,
+        "created_from": "concept_extractor",
+        "created_at": "2026-03-15T11:56:00.375430"
+      },
+      "created_at": "2026-03-15T11:56:00.375460",
+      "updated_at": "2026-03-15T11:56:00.375464"
+    },
+    {
+      "id": "kg_analyze_23261121",
+      "name": "analyze",
+      "category": "skill",
+      "definition": "进化事件中的能力：analyze",
+      "mastery_level": 0.0,
+      "related_nodes": {},
+      "metadata": {
+        "source": "evolution_event.data.capability",
+        "confidence": 0.9,
+        "created_from": "concept_extractor",
+        "created_at": "2026-03-15T11:56:00.378139"
+      },
+      "created_at": "2026-03-15T11:56:00.378201",
+      "updated_at": "2026-03-15T11:56:00.378211"
+    },
+    {
+      "id": "kg_working_memory_388bc377",
+      "name": "working_memory",
+      "category": "skill",
+      "definition": "进化事件中的能力：working_memory",
+      "mastery_level": 0.0,
+      "related_nodes": {},
+      "metadata": {
+        "source": "evolution_event.data.capability",
+        "confidence": 0.9,
+        "created_from": "concept_extractor",
+        "created_at": "2026-03-15T11:56:00.379610"
+      },
+      "created_at": "2026-03-15T11:56:00.379634",
+      "updated_at": "2026-03-15T11:56:00.379642"
+    },
+    {
+      "id": "kg_memory_consolidated_8e803b63",
+      "name": "memory_consolidated",
+      "category": "concept",
+      "definition": "从evolution_event.type提取的概念",
+      "mastery_level": 0.0,
+      "related_nodes": {},
+      "metadata": {
+        "source": "evolution_event.type",
+        "confidence": 0.85,
+        "created_from": "concept_extractor",
+        "created_at": "2026-03-15T11:56:00.381058"
+      },
+      "created_at": "2026-03-15T11:56:00.381081",
+      "updated_at": "2026-03-15T11:56:00.381084"
+    },
+    {
+      "id": "kg_capability_evolution_20260315105929_9f20b352",
+      "name": "capability_evolution_20260315105929",
+      "category": "skill",
+      "definition": "核心能力：capability_evolution_20260315105929",
+      "mastery_level": 0.0,
+      "related_nodes": {},
+      "metadata": {
+        "source": "capability.name",
+        "confidence": 0.95,
+        "created_from": "concept_extractor",
+        "created_at": "2026-03-15T11:56:00.382630"
+      },
+      "created_at": "2026-03-15T11:56:00.382651",
+      "updated_at": "2026-03-15T11:56:00.382654"
+    },
+    {
+      "id": "kg_capability_evolution_20260315100442_71e08379",
+      "name": "capability_evolution_20260315100442",
+      "category": "skill",
+      "definition": "核心能力：capability_evolution_20260315100442",
+      "mastery_level": 0.0,
+      "related_nodes": {},
+      "metadata": {
+        "source": "capability.name",
+        "confidence": 0.95,
+        "created_from": "concept_extractor",
+        "created_at": "2026-03-15T11:56:00.384068"
+      },
+      "created_at": "2026-03-15T11:56:00.384099",
+      "updated_at": "2026-03-15T11:56:00.384102"
+    },
+    {
+      "id": "kg_capability_evolution_20260315105350_46cefbcc",
+      "name": "capability_evolution_20260315105350",
+      "category": "skill",
+      "definition": "核心能力：capability_evolution_20260315105350",
+      "mastery_level": 0.0,
+      "related_nodes": {},
+      "metadata": {
+        "source": "capability.name",
+        "confidence": 0.95,
+        "created_from": "concept_extractor",
+        "created_at": "2026-03-15T11:56:00.385524"
+      },
+      "created_at": "2026-03-15T11:56:00.385544",
+      "updated_at": "2026-03-15T11:56:00.385546"
+    },
+    {
+      "id": "kg_capability_evolution_20260315105347_27648893",
+      "name": "capability_evolution_20260315105347",
+      "category": "skill",
+      "definition": "核心能力：capability_evolution_20260315105347",
+      "mastery_level": 0.0,
+      "related_nodes": {},
+      "metadata": {
+        "source": "capability.name",
+        "confidence": 0.95,
+        "created_from": "concept_extractor",
+        "created_at": "2026-03-15T11:56:00.387386"
+      },
+      "created_at": "2026-03-15T11:56:00.387413",
+      "updated_at": "2026-03-15T11:56:00.387416"
+    },
+    {
+      "id": "kg_capability_evolution_20260315105407_3f86b070",
+      "name": "capability_evolution_20260315105407",
+      "category": "skill",
+      "definition": "核心能力：capability_evolution_20260315105407",
+      "mastery_level": 0.0,
+      "related_nodes": {},
+      "metadata": {
+        "source": "capability.name",
+        "confidence": 0.95,
+        "created_from": "concept_extractor",
+        "created_at": "2026-03-15T11:56:00.388871"
+      },
+      "created_at": "2026-03-15T11:56:00.388891",
+      "updated_at": "2026-03-15T11:56:00.388893"
+    }
+  ],
+  "relations": [
+    {
+      "source_id": "kg_keyword_extraction_dbe70311",
+      "target_id": "kg_search_strategy_7bdb7ccf",
+      "relation_type": "depends_on",
+      "strength": 0.9,
+      "evidence": [],
+      "created_at": "2026-03-15 03:53:27"
+    },
+    {
+      "source_id": "kg_search_strategy_7bdb7ccf",
+      "target_id": "kg_web_search_cf779623",
+      "relation_type": "used_for",
+      "strength": 0.8,
+      "evidence": [],
+      "created_at": "2026-03-15 03:53:27"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "knowledge_graph.v1",
+  "exported_at": "2026-03-15T11:53:27.876984",
+  "nodes": [
+    {
+      "id": "kg_web_search_cf779623",
+      "name": "Web Search",
+      "category": "skill",
+      "definition": "网络搜索能力",
+      "mastery_level": 0.8,
+      "related_nodes": {},
+      "metadata": {},
+      "created_at": "2026-03-15T11:53:27.866198",
+      "updated_at": "2026-03-15T11:53:27.866213"
+    },
+    {
+      "id": "kg_search_strategy_7bdb7ccf",
+      "name": "Search Strategy",
+      "category": "concept",
+      "definition": "搜索策略概念",
+      "mastery_level": 0.6,
+      "related_nodes": {
+        "kg_web_search_cf779623": 0.8
+      },
+      "metadata": {},
+      "created_at": "2026-03-15T11:53:27.866232",
+      "updated_at": "2026-03-15T11:53:27.866234"
+    },
+    {
+      "id": "kg_keyword_extraction_dbe70311",
+      "name": "Keyword Extraction",
+      "category": "skill",
+      "definition": "关键词提取技能",
+      "mastery_level": 0.4,
+      "related_nodes": {
+        "kg_search_strategy_7bdb7ccf": 0.9
+      },
+      "metadata": {},
+      "created_at": "2026-03-15T11:53:27.866242",
+      "updated_at": "2026-03-15T11:53:27.866244"
+    }
+  ],
+  "relations": [
+    {
+      "source_id": "kg_keyword_extraction_dbe70311",
+      "target_id": "kg_search_strategy_7bdb7ccf",
+      "relation_type": "depends_on",
+      "strength": 0.9,
+      "evidence": [],
+      "created_at": "2026-03-15T11:53:27.870298"
+    },
+    {
+      "source_id": "kg_search_strategy_7bdb7ccf",
+      "target_id": "kg_web_search_cf779623",
+      "relation_type": "used_for",
+      "strength": 0.8,
+      "evidence": [],
+      "created_at": "2026-03-15T11:53:27.870307"
+    }
+  ]
+}

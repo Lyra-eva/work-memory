@@ -1,0 +1,32 @@
+[
+  {
+    "type": "growth",
+    "name": "持续成长轨迹",
+    "description": "检测到 1 次进化事件，显示持续成长",
+    "importance": 0.8,
+    "confidence": 0.6,
+    "recommendation": "保持当前进化节奏",
+    "agent_id": "test_agent",
+    "mined_at": "2026-03-15T10:04:42.191111"
+  },
+  {
+    "type": "growth",
+    "name": "持续成长轨迹",
+    "description": "检测到 9 次进化事件，显示持续成长",
+    "importance": 0.8,
+    "confidence": 0.95,
+    "recommendation": "保持当前进化节奏",
+    "agent_id": "test_agent",
+    "mined_at": "2026-03-15T10:54:07.484872"
+  },
+  {
+    "type": "success",
+    "name": "成功模式",
+    "description": "检测到 3 次成功事件",
+    "importance": 0.9,
+    "confidence": 0.85,
+    "recommendation": "继续按当前模式推进进化",
+    "agent_id": "test_agent",
+    "mined_at": "2026-03-15T10:54:07.484876"
+  }
+]
