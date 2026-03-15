@@ -43,6 +43,9 @@ EVOLUTION_DIR = os.path.join(WORKSPACE_DIR, 'evolution')
 DATA_DIR = os.path.join(EVOLUTION_DIR, 'data')
 MC_DB_PATH = os.path.join(DATA_DIR, 'memory_consolidation.db')
 
+# 确保 data 目录存在
+os.makedirs(DATA_DIR, exist_ok=True)
+
 
 # ============================================================
 # 数据类
