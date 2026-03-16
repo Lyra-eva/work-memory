@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "work-memory"
+dynamic = ["version"]
+description = "工作记忆系统 - 专为工作场景设计的文件系统记忆架构"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "OpenClaw Community", email = "support@openclaw.ai"}
+]
+keywords = ["memory", "work", "productivity", "file-system", "knowledge-management"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business :: Groupware",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.6"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+]
+docs = [
+    "mkdocs>=1.4.0",
+    "mkdocs-material>=9.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/openclaw/work-memory"
+Documentation = "https://github.com/openclaw/work-memory#readme"
+Repository = "https://github.com/openclaw/work-memory.git"
+Issues = "https://github.com/openclaw/work-memory/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["work_memory*"]
+
+[tool.setuptools.package-data]
+work_memory = ["*.md"]
+
+[tool.setuptools.dynamic]
+version = {file = "VERSION"}
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
