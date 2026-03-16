@@ -34,6 +34,8 @@ cd work-memory
 ./skills/install.sh
 ```
 
+**注意**：克隆后的目录名是 `work-memory`，不是 `work-memory-release`。
+
 ## 🚀 快速开始
 
 ### Python API

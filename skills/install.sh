@@ -92,7 +92,7 @@ if [ "$BACKUP_NEEDED" = true ]; then
     
     # 复制数据目录（排除 backups 目录本身）
     if [ -d "$WM_DATA" ]; then
-        rsync -a --exclude='.backups' "$WM_DATA/" "$BACKUP_DIR/" 2>/dev/null || \
+        # 使用 cp -r，兼容性更好
         cp -r "$WM_DATA" "$BACKUP_DIR" 2>/dev/null || true
         echo -e "${GREEN}✅ 数据已备份：$BACKUP_DIR${NC}"
     fi
@@ -104,17 +104,24 @@ fi
 echo -e "\n${YELLOW}📦 安装核心库...${NC}"
 cd "$PROJECT_ROOT"
 
-if pip3 install -e . 2>/dev/null; then
+# 尝试多种安装方式
+if pip3 install -e . 2>&1 | tee /tmp/work-memory-install.log | grep -q "Successfully installed"; then
     echo -e "${GREEN}✅ 核心库安装成功${NC}"
-elif pip3 install --break-system-packages -e . 2>/dev/null; then
+elif pip3 install --break-system-packages -e . 2>&1 | tee /tmp/work-memory-install.log | grep -q "Successfully installed"; then
     echo -e "${GREEN}✅ 核心库安装成功（使用 --break-system-packages）${NC}"
 else
-    echo -e "${RED}❌ 核心库安装失败${NC}"
-    echo "建议：创建虚拟环境后安装"
-    echo "  python3 -m venv venv"
-    echo "  source venv/bin/activate"
-    echo "  pip install -e ."
-    exit 1
+    # 检查是否已经安装
+    if python3 -c "import work_memory" 2>/dev/null; then
+        echo -e "${GREEN}✅ 核心库已安装${NC}"
+    else
+        echo -e "${RED}❌ 核心库安装失败${NC}"
+        echo "查看日志：/tmp/work-memory-install.log"
+        echo "建议：创建虚拟环境后安装"
+        echo "  python3 -m venv venv"
+        echo "  source venv/bin/activate"
+        echo "  pip install -e ."
+        exit 1
+    fi
 fi
 
 # ============================================================
