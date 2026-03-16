@@ -29,10 +29,9 @@ pip install -e .
 
 ```bash
 # 在 OpenClaw workspace 中
-cd ~/.openclaw/workspace
 git clone https://github.com/Lyra-eva/work-memory.git
 cd work-memory
-./skills/work-memory/install.sh
+./skills/install.sh
 ```
 
 ## 🚀 快速开始
