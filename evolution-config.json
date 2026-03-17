@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "autoCollect": true,
+  "autoReflect": "daily",
+  "reflectTime": "0 3 * * *",
+  "maxEvents": 10000,
+  "injectContext": true
+}

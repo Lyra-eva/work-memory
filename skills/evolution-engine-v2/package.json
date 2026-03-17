@@ -1,0 +1,66 @@
+{
+  "name": "evolution-engine-v2",
+  "version": "2.0.0",
+  "description": "AI 自主进化系统 - 让 AI 持续学习和改进",
+  "type": "module",
+  "main": "src/openclaw-integration.ts",
+  "scripts": {
+    "collect": "tsx src/event-collector.ts",
+    "reflect": "tsx src/reflector.ts",
+    "inject": "tsx src/context-injector.ts",
+    "integration": "tsx src/openclaw-integration.ts",
+    "test": "tsx src/test.ts",
+    "dev": "tsx watch src/",
+    "build": "tsc --noEmit",
+    "lint": "eslint src/",
+    "prepublishOnly": "npm run build && npm run test",
+    "postinstall": "tsx scripts/post-install.ts || bash scripts/post-install.sh || echo '请手动运行：npx tsx src/openclaw-integration.ts init'"
+  },
+  "keywords": [
+    "openclaw",
+    "skill",
+    "evolution",
+    "ai",
+    "learning",
+    "memory",
+    "reflection",
+    "automation"
+  ],
+  "author": "OpenClaw Community",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openclaw/skill-evolution-engine-v2.git"
+  },
+  "homepage": "https://github.com/openclaw/skill-evolution-engine-v2#readme",
+  "bugs": {
+    "url": "https://github.com/openclaw/skill-evolution-engine-v2/issues"
+  },
+  "dependencies": {
+    "tsx": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "src/",
+    "SKILL.md",
+    "README.md",
+    "CHANGELOG.md",
+    "install.sh",
+    "package.json"
+  ],
+  "clawhub": {
+    "slug": "evolution-engine-v2",
+    "name": "Evolution Engine v2",
+    "category": "automation",
+    "tags": ["ai", "evolution", "learning", "memory", "reflection"],
+    "homepage": "https://github.com/openclaw/skill-evolution-engine-v2",
+    "author": "OpenClaw Community",
+    "license": "MIT"
+  }
+}

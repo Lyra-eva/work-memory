@@ -1,0 +1,7 @@
+{
+  "enabled": true,
+  "ooda_interval_seconds": 30,
+  "auto_evolve": true,
+  "max_events": 10000,
+  "backup_enabled": true
+}

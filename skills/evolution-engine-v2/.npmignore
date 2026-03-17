@@ -1,0 +1,46 @@
+# 本地数据
+memory/
+*.jsonl
+*.log
+
+# 开发文件
+.git/
+.github/
+.vscode/
+.idea/
+
+# 测试
+test/
+tests/
+*.test.ts
+*.spec.ts
+coverage/
+
+# 文档（发布时不需要）
+DEPLOYMENT.md
+PUBLISH_REPORT.md
+RELEASE_CHECKLIST.md
+
+# 脚本
+publish.sh
+install.sh
+
+# 配置（用户需要自己生成）
+evolution-config.json
+
+# 备份
+*.backup
+*.bak
+backups/
+
+# 临时文件
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db

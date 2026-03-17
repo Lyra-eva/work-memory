@@ -1,0 +1,21 @@
+{
+  "total_events": 3,
+  "events": [
+    {
+      "event_id": "evt_1773707877676_b1dba5b9",
+      "event_type": "success",
+      "timestamp": "2026-03-17T00:37:57.677Z"
+    },
+    {
+      "event_id": "evt_1773707879204_5c3e6a1c",
+      "event_type": "lesson",
+      "timestamp": "2026-03-17T00:37:59.204Z"
+    },
+    {
+      "event_id": "evt_1773707880743_dba1780d",
+      "event_type": "failure",
+      "timestamp": "2026-03-17T00:38:00.743Z"
+    }
+  ],
+  "last_updated": "2026-03-17T00:38:00.746Z"
+}

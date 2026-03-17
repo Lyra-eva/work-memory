@@ -1,0 +1,10 @@
+{
+  "source": "path",
+  "sourcePath": "/home/admin/.openclaw/workspace/skills/work-memory",
+  "installPath": "/home/admin/.openclaw/workspace/skills/work-memory",
+  "version": "2.0.0",
+  "installedAt": "2026-03-14T10:55:00.000Z",
+  "scripts": {
+    "postinstall": "./install.sh"
+  }
+}
