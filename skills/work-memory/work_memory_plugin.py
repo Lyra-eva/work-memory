@@ -42,10 +42,10 @@ class WorkMemoryPlugin:
         初始化插件
         
         Args:
-            root_dir: 数据目录，默认 ~/.openclaw/workspace/work-memory-data/
+            root_dir: 数据目录，默认 ~/.openclaw/workspace/memory/work-memory/
         """
         if root_dir is None:
-            root_dir = os.path.expanduser("~/.openclaw/workspace/work-memory-data")
+            root_dir = os.path.expanduser("~/.openclaw/workspace/memory/work-memory")
         
         self.root_dir = root_dir
         self.wm = WorkMemory(root_dir=root_dir)
